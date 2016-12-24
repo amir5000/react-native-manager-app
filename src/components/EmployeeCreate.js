@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { employeeUpdate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
@@ -26,19 +26,19 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.pickerLabelStyle}>Shift</Text>
           <Picker
-            style={{flex: 1}}
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
-            <Picker.item label="Monday" value="Moday" />
-            <Picker.item label="Tuesday" value="Tuesday" />
-            <Picker.item label="Wednesday" value="Wednesday" />
-            <Picker.item label="Thursday" value="Thursday" />
-            <Picker.item label="Friday" value="Friday" />
-            <Picker.item label="Saturday" value="Saturday" />
-            <Picker.item label="Sunday" value="Sunday" />
+            <Picker.Item label="Monday" value="Moday" />
+            <Picker.Item label="Tuesday" value="Tuesday" />
+            <Picker.Item label="Wednesday" value="Wednesday" />
+            <Picker.Item label="Thursday" value="Thursday" />
+            <Picker.Item label="Friday" value="Friday" />
+            <Picker.Item label="Saturday" value="Saturday" />
+            <Picker.Item label="Sunday" value="Sunday" />
           </Picker>
         </CardSection>
 
@@ -47,6 +47,13 @@ class EmployeeCreate extends Component {
         </CardSection>
       </Card>
     )
+  }
+}
+
+const styles = {
+  pickerLabelStyle: {
+    fontSize: 18,
+    paddingLeft: 20
   }
 }
 
